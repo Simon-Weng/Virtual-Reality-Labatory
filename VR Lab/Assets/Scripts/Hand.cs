@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
-//[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 
 public class Hand : MonoBehaviour
 {
@@ -45,15 +46,15 @@ public class Hand : MonoBehaviour
 
     void AnimateHand()
     {
-        if (gripCurrent != gripTarget)
+        if (gripCurrent == gripTarget)
         {
-            gripCurrent = Mathf.Movetowards(gripCurrent, gripTarget, Time.deltaTime * speed);
+            gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * speed);
             animator.SetFloat(animatorGripParam, gripCurrent);
         }
 
-        if (tiggerCurrent != triggerTarget)
+        if (triggerCurrent == triggerTarget)
         {
-            triggerCurrent = Mathf.Movetowards(triggerCurrent, triggerTarget, Time.deltaTime * speed);
+            triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * speed);
             animator.SetFloat(animatorTriggerParam, triggerCurrent);
         }
 

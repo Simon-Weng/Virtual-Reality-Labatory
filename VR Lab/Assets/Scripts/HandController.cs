@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-//[RequrieComponet(typeof(ActionBaasedController))]
+[RequireComponent(typeof(ActionBasedController))]
 
 public class HandController : MonoBehaviour
 {
 
-    ActonBasedController controller;
+    ActionBasedController controller;
     public Hand hand;
 
     // Start is called before the first frame update
