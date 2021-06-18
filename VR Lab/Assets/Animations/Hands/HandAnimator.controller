@@ -32,7 +32,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: Trigger
+    m_ConditionEvent: Grip
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 387280334920338891}
@@ -218,7 +218,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
-  m_Speed: 10
+  m_Speed: 20
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4590165534743206616}
@@ -295,7 +295,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
-  m_Speed: 10
+  m_Speed: 20
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4414025602960680679}
