@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class TT2 : MonoBehaviour
 {
-    //load up the lefthand 
-    public Transform hand;
-    //creates a variable for the trigger of the object 
-    private Collider triggerCollider;
-    //creates the variable for activation 
-    private float activation;
-    //creates variable for distance 
-    private float dist = 0;
-    //creates variable for cloestpoint
-    private Vector3 cPoint;
-  
+   
+    public Transform hand;  //load up the lefthand 
+    private Collider triggerCollider;  //creates a variable for the trigger of the object 
 
-    //test using object 
-    public Transform test;
+    private float dist; //creates variable for distance 
+    private Vector3 cPoint;//creates variable for cloestpoint
 
+    public GameObject Beam1; //this is where the beam is stored as a game object 
+    private Beam beamScript; //declears script veraible as class Beam 
+    private BeamController ScriptTest;
+
+
+    public Transform prefab;
 
     // Start is called before the first frame update
     void Start()
     {
         //get collider from of object 
         triggerCollider = GetComponent<Collider>();
-        
+        //scriptTest = Beam1.GetComponent<BeamController>();
+        // beamScript = Beam1.GetComponent<Beam>(); //this gets the BEAM script fromt he object BEAM1
+        dist = 0f;
+
 
     }
 
@@ -33,65 +34,59 @@ public class TT2 : MonoBehaviour
     void Update()
     {
         
-        /*if (activation == 2)
-        {
-            float dist = Vector3.Distance(cPoint, hand.position);
-            if (dist >= 0.5)
-            {
-                Renderer render = GetComponent<Renderer>();
-                render.material.color = Color.red;
-            }
-            else
-            {
-                Renderer render = GetComponent<Renderer>();
-                render.material.color = Color.white;
-            }
-        }*/
-
-
 
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        //tells the update function that the trigger has been acitvated 
-        activation = 2;
-        //gets the intial cpoint 
         cPoint = triggerCollider.ClosestPoint(hand.position);
+        dist = 0;
 
+        Instantiate(prefab, cPoint, Quaternion.identity);
 
+        Renderer render = GetComponent<Renderer>();
+        render.material.color = Color.blue;
+
+       
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //tells the update function that the trigger has been acitvated 
-        activation = 1;
-        dist = 0;
-
+        
         Renderer render = GetComponent<Renderer>();
         render.material.color = Color.white;
 
+        cPoint = triggerCollider.ClosestPoint(hand.position);
+        dist = 0;
     }
 
-   public void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
-        float dist = Vector3.Distance(cPoint, hand.position);
 
-        if (dist >= 1)
+        float dist = Vector3.Distance(cPoint, hand.position);
+      
+     
+        if (dist > 0.1f && dist < 0.3f )
         {
             Renderer render = GetComponent<Renderer>();
             render.material.color = Color.red;
-        }
-        else
+
+        }else if( dist > 0.3f && dist < 0.5f)
         {
             Renderer render = GetComponent<Renderer>();
-            render.material.color = Color.white;
+            render.material.color = Color.yellow;
         }
+        else if(dist > 0.5f && dist < 0.7f)
+        {
+            Renderer render = GetComponent<Renderer>();
+            render.material.color = Color.green;
+        }
+      
+
     }
 
-
-
-
+       
+     
 
 
 }

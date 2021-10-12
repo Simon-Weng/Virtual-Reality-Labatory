@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(Animator))]
-
-public class Beam : MonoBehaviour
+public class beam2 : MonoBehaviour
 {
+
     Animator animator;
-   
+
     private float triggerTarget;
     private float triggerCurrent;
-    private string animatorTriggerParam = "Trigger";
+
 
     public float speed; // speed of how fast u want currentgrip --> target grip 
 
-    public float ttt; // Trigger Target decides which trigger box is which
+    public float ttt1; // Trigger Target decides which trigger box is which
+    public float ttt2;
     public float ttv; // Trigger Value: the value that the trigger outputs 
 
 
@@ -24,8 +28,8 @@ public class Beam : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        ttt = 0;
-        ttv = 0;
+        ttt1 = 0;
+        ttt2 = 0;
     }
 
     // Update is called once per frame
@@ -42,7 +46,8 @@ public class Beam : MonoBehaviour
     void AnimateBeam()
     {
 
-        animator.SetFloat(animatorTriggerParam, ttt);
+        animator.SetFloat("point1", ttt1);
+        animator.SetFloat("point2", ttt2);
 
         /*if (triggerCurrent != triggerTarget)
         {
@@ -52,3 +57,4 @@ public class Beam : MonoBehaviour
 
     }
 }
+

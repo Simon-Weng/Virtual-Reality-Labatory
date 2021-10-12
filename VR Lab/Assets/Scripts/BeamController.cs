@@ -11,16 +11,27 @@ public class BeamController : MonoBehaviour
     ActionBasedController controller;
     public Beam beam;
 
+    public float ttt; // Trigger Target decides which trigger box is which
+    public float ttv; // Trigger Value: the value that the trigger outputs 
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<ActionBasedController>(); //get the controller and puts it under the variable named "controller" 
-
+        ttt = 0;
+        ttv = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+        ttt = 0.8f;
+     
+        beam.SetTrigger(ttt);
+       
+
         //select = grip input 
         // action = trigger input 
 
